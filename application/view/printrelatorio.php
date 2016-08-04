@@ -1,3 +1,4 @@
+<meta charset="utf-8">
 <?php
 $datainicial=$_GET['datainicial'];
 $datafinal=$_GET['datafinal'];

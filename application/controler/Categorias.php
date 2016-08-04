@@ -1,5 +1,6 @@
+<?php include 'scriptsCSS.php'; ?>
 <?php
-
+header ('Content-type: text/html; charset=UTF-8');
 class Categorias {
 	
 	
@@ -132,10 +133,15 @@ class Categorias {
 		
 		$produtos=$this->conexaoDB->PesquisaCampos("id,nome",$this->tabela);
 		
-		echo '<h1>Listando '.$this->tabela.'</h1><br><br>';
-		echo '<table align="center">';
+		echo '<h1 class=texc>Listando '.$this->tabela.'</h1><br><br>';
+		echo '<table>';
 		//echo '<tr><td class="header">ID</td><td class="header">Nome</td><td></td><td></td></tr>';
-		echo '<tr><td class="header">ID</td><td class="header">Nome</td><td></td></tr>';
+		echo '<thead>';
+		echo '<tr>
+		<th>ID</th>
+		<th>Nome</th>
+		<th>Atualizar</th>
+		</tr>';
 		while($produto=mysql_fetch_array($produtos)){
 			
 			echo '<tr>';
@@ -145,6 +151,7 @@ class Categorias {
 			//echo '<td><a href="main.php?url='.$this->tabela.'&acao=deletar&id='.$produto['id'].'">Excluir</a></td>';
 			echo '</tr>';
 		}
+		echo '</thead>';
 		echo '</table>';
 	}
 	
@@ -270,7 +277,7 @@ class Categorias {
 		echo '<img src="img/alert.png"><br />';	
 	    while($produto=mysql_fetch_array($produtos)) {
 
-		   echo '<big><b><span style="color:red;">'.$produto['nome']." chegou ao estoque mínimo</span></b></big><br>";
+		   echo '<big><b><span style="color:red;">'.$produto['nome']." chegou ao estoque minimo</span></b></big><br>";
 	}
 		
 	}

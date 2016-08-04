@@ -1,3 +1,5 @@
+<?php include 'controler/scriptsCSS.php'; ?>
+<meta charset="utf-8">
 <?php 
 
 $acao=(isset($_GET['acao']))?$_GET['acao']:"";
@@ -67,3 +69,9 @@ switch ($acao){
 
 
 ?>
+
+<script src="../js/vendor/jquery.js"></script>
+<script src="../js/vendor/what-input.js"></script>
+<script src="../js/vendor/foundation.js"></script>
+<script src="../js/app.js"></script>	
+<?php include 'scriptsJS.php'; ?>

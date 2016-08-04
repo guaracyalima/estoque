@@ -1,3 +1,4 @@
+<?php include 'scriptsCSS.php'; ?>
 <?php
 
 error_reporting(0);
@@ -33,8 +34,8 @@ class Form {
 		$combos=explode(',',$combos);
 		
 		//print_r($ajax).'<br>';
-		
-		echo '<h1>Cadastro de '.$this->table.'</h1>';
+		echo '<meta charset="utf-8">';
+		echo '<h1 class=texc>Cadastro de '.$this->table.'</h1>';
 		echo '<form action="main.php?url='.$url.'&acao='.$action.'" method="post">'; 
 		echo '<table>';
 		foreach ($campos as $campo) {
@@ -52,17 +53,18 @@ class Form {
 					
 						if($campo <> 'obs'){
 							$campo=str_replace("_"," ",$campo);
-							echo '<tr><td>'.ucfirst($campo)."</td><td><input type='text' name='$campo' value='$valor' aria-required='true' required='' class='required'></td></tr> \n";	
+							echo "<table>";
+							echo '<td  class="identificadorDeInput">'.ucfirst($campo)."</td><td><input type='text'  name='$campo' value='$valor' aria-required='true' required='' class='required'></td> \n";	
 						}else{
 							$campo=str_replace("_"," ",$campo);
-							echo '<tr><td>'.ucfirst($campo)."</td><td><input type='text' name='$campo' value='$valor'></td></tr> \n";	
+							echo '<td class="identificadorDeInput">'.ucfirst($campo)."</td><td><input type='text' name='$campo' value='$valor'></td> \n";	
 						}
 					} else {
 						$js="";
 						
-						echo '<tr><td>'.ucfirst($campo).'</td><td>';
+						echo '<td class="identificadorDeInput">'.ucfirst($campo).'</td><td>';
 						$this->Combo($campo,$campo,'id','nome',$js);
-						echo '</td></tr>';
+						echo '</td>';
 					}
 				}
 				else {
@@ -76,15 +78,15 @@ class Form {
 							$js='onChange=\'Ajax("'.$ajax['remetente'.$campo].'","'.$ajax['destinatario'.$campo].'","'.$ajax['tabela'.$campo].'")\'';
 						}
 					}
-					echo '<tr><td>'.ucfirst($campo).'</td><td>';
+					echo '<td>'.ucfirst($campo).'</td><td  class="identificadorDeInput">';
 					$this->Combo($campo,$campo,'id','nome',$js);
-					echo '</td></tr>';
+					echo '</td>';
 						
 					
 				}
 			}
 		}
-		echo '<tr><td><input type="submit" value="Enviar"></td></tr>';
+		echo '<td><input class="button submit success  button expanded"  type="submit" value="Cadastrar"></td></tr>';
 		echo '</table>';	
 		echo '</form>';	
 	

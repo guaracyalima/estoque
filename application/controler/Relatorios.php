@@ -1,4 +1,6 @@
+<?php include 'scriptsCSS.php'; ?>
 <?php
+
 
 class Relatorio extends Form   {
 	
@@ -26,14 +28,17 @@ class Relatorio extends Form   {
 	
 		$campos=substr($this->fields,0,-1);
 		$campos=explode(',',$campos);
-		echo '<h1>Relatorio de '.$this->table.'</h1><br><br>';
-		echo '<table><tr>';
+		header ('Content-type: text/html; charset=UTF-8');
+		echo '<meta charset="UTF-8">';
+		echo '<h1 class=texc>Relatorio de '.$this->table.'</h1><br><br>';
+		echo '<table><thead><tr>';
 		foreach ($campos as $campo) {
 			$campo=str_replace("_"," ",$campo);
-			echo '<td class="header">'.ucfirst($campo).'</td>';
+			//############
+			echo '<th>'.ucfirst($campo).'</th>';
 			
 		}
-		echo '</tr>';
+		echo '</thead></tr>';
 		$dados=$this->conexaoDB->PesquisaTabela($this->table);
 		while($dado=mysql_fetch_object($dados)){
 			
@@ -63,7 +68,10 @@ class Relatorio extends Form   {
 		
 		
 		if(empty($datainicial) && empty($datafinal)){
-			echo '<h1>Relatório de '.$this->table.'</h1><br><br>';	
+			header ('Content-type: text/html; charset=UTF-8');
+			
+			
+			echo '<h1 class=texc>Relatorio de '.$this->table.'</h1><br><br>';	
 			echo '<form action="main.php?url=relatorio&acao=entrada" method="post">';
 			echo 'Data Inicial:	<input type="date" name="datainicial" /><br><br>';
 			echo 'Data Final:	<input type="date" name="datafinal"/><br>';
@@ -80,9 +88,18 @@ class Relatorio extends Form   {
 			left join srs_supplier f on f.id=e.fornecedor
 			where date(e.data) between '$datai' and '$dataf'";
 			
-			echo '<h1>Relatório de '.$this->table.'</h1><br><br>';	
-			echo '<table >';
-			echo '<tr><td class="header" style="width:220px; padding:10px">Data / Hora</td><td class="header">Produto</td ><td class="header">Fornecedor</td><td class="header">Quantidade</td><td class="header">Observação</td></tr>';
+			echo '<h1 class=texc>Relatorio de '.$this->table.'</h1><br><br>';	
+			echo '<table>';
+			echo '<thead>';
+			echo '<tr>';
+			echo '
+			<th>Data / Hora</th>
+			<th>Produto</th>
+			<th>Fornecedor</th>
+			<th>Quantidade</th>
+			<th>Observacao</th>';
+			echo '</tr>';
+			echo '</thead>';
 			$dados=$this->conexaoDB->ExecutaQuery($sql);
 			while($dado=mysql_fetch_object($dados)){
 				
@@ -90,7 +107,7 @@ class Relatorio extends Form   {
 				
 				foreach ($dado as $campo) {
 					
-					echo '<td style="padding:2px">'.$campo.'</td>';
+					echo '<td>'.$campo.'</td>';
 					
 				}
 		
@@ -115,7 +132,7 @@ function Saida($datainicial, $datafinal,$print="s"){
 		
 		
 		if(empty($datainicial) && empty($datafinal)){
-			echo '<h1>Relatório de '.$this->table.'</h1><br><br>';	
+			echo '<h1 class=texc>Relatorio de '.$this->table.'</h1><br><br>';	
 			echo '<form action="main.php?url=relatorio&acao=saida" method="post">';
 			echo 'Data Inicial:	<input type="date" name="datainicial" /><br><br>';
 			echo 'Data Final:	<input type="date" name="datafinal" /><br>';
@@ -132,9 +149,17 @@ function Saida($datainicial, $datafinal,$print="s"){
 			left join srs_requester r on r.id=s.retirante
 			where date(s.data) between '$datai' and '$dataf'";
 			
-			echo '<h1>Relatório de '.$this->table.'</h1><br><br>';	
-			echo '<table >';
-			echo '<tr><td class="header" style="width:220px; padding:10px">Data / Hora</td><td class="header">Produto</td ><td class="header">Retirante</td><td class="header">Quantidade</td><td class="header">Observação</td></tr>';
+			echo '<h1 class=texc>Relatorio de '.$this->table.'</h1><br><br>';	
+			echo '<table >';			
+			echo '<thead>';
+			echo '<tr>';
+			echo '<th>Data / Hora</th>
+			<th>Produto</th>
+			<th>Retirante</th>
+			<th>Quantidade</th>
+			<th>Observacao</th>';
+			echo '</tr>';
+			echo '</thead>';
 			$dados=$this->conexaoDB->ExecutaQuery($sql);
 			while($dado=mysql_fetch_object($dados)){
 				
@@ -142,7 +167,7 @@ function Saida($datainicial, $datafinal,$print="s"){
 				
 				foreach ($dado as $campo) {
 					
-					echo '<td style="padding:2px">'.$campo.'</td>';
+					echo '<td>'.$campo.'</td>';
 					
 				}
 		

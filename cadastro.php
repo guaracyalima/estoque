@@ -10,5 +10,6 @@ $$varval$nuser] = \"$npass\";
 ?>";
 fputs($bd, $new);
 fclose($bd);
-echo "<script>location.href='sucesso.php'</script>";
+//echo "<script>location.href='sucesso.php'</script>";
+echo"<script language='javascript' type='text/javascript'>alert('Usuario cadastrado com sucesso!.');window.location.href='main.php';</script>";
 ?>

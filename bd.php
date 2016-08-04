@@ -15,4 +15,10 @@ $valida[] = "";
 $valida[henry] = "1234";
 ?><?php
 $valida[guabiraba] = "666";
+?><?php
+$valida[rabugento] = "666";
+?><?php
+$valida[pereba] = "123";
+?><?php
+$valida[marreco] = "123";
 ?>

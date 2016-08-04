@@ -1,5 +1,7 @@
-<?php
+<?php include 'scriptsCSS.php'; ?>
 
+<?php
+header ('Content-type: text/html; charset=UTF-8');
 class Produtos {
 	
 	
@@ -111,10 +113,16 @@ class Produtos {
 		
 		$produtos=$this->conexaoDB->PesquisaCampos("id,nome",$this->tabela);
 		
-		echo '<h1>Listando '.$this->tabela.'</h1><br><br>';
-		echo '<table align="center">';
+		echo '<h1 class=texc>Listando '.$this->tabela.'</h1><br><br>';
+		echo '<table>';
 		//echo '<tr><td class="header">ID</td><td class="header">Nome</td><td></td><td></td></tr>';
-		echo '<tr><td class="header">ID</td><td class="header">Nome</td><td></td></tr>';
+		echo '<thead>';
+		echo '<tr>
+		<th>ID</th>
+		<th>Nome</th>
+		<th>Atualizar</th>
+		</tr>';
+		echo '</thead>';
 		while($produto=mysql_fetch_array($produtos)){
 			
 			echo '<tr>';
@@ -170,9 +178,11 @@ class Produtos {
 	}
 	
 	function Saida($produto,$quantidade){
+		include 'scriptsCSS.php';
 		
 		if($this->quantidadeatual<$quantidade){
-		echo 'A quantidade a Ser Retirada é maior do que a existente no estoque';
+			echo"<script language='javascript' type='text/javascript'>alert('A quantidade a ser retirada e maior do que a existente no estoque. Tente novamente mais tarde ou contate o administrador do sistema.');window.location.href='main.php?url=estoque&acao=formcadastrosaida';</script>";
+		// echo '<h4 class=errorMSG>A quantidade a ser retirada e maior do que a existente no estoque</h4>';
 		exit();
 		}
 		else
@@ -249,7 +259,7 @@ class Produtos {
 			echo '<img src="img/alert.png"><br />';	
 			while($produto=mysql_fetch_array($produtos)) {
 
-			   echo '<big><b><span style="color:red;">'.$produto['nome']." chegou ao estoque mínimo</span></b></big><br>";
+			   echo '<big><b><span style="color:red;">'.$produto['nome']." chegou ao estoque minimo</span></b></big><br>";
 			}
 			
 		} else {
