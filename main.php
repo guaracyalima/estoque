@@ -17,6 +17,7 @@
 	<link rel="stylesheet" type="text/css" href="css/foundation.css">
 	<link rel="stylesheet" type="text/css" href="css/foundation.min.css">
 	<link rel="stylesheet" type="text/css" href="css/app.css">
+	<link rel="stylesheet" href="css/animate.css">
 	<link rel="icon" type="image/png" href="img/favicon.ico" />
 
 
@@ -45,7 +46,7 @@
 		<div class="small-12 medium-12 large-12 columns">
 
 			<header id="header" class="header">
-				<h4 class="tituloEstoque">Controle de estoque</h4>
+				<h4 class="tituloEstoque animated bounceInDown">Controle de estoque</h4>
 			</header>
 
 
@@ -59,7 +60,7 @@
 				<div class="small-12 medium-12 large-12 columns">
 
 
-					
+					<?php echo "O estoque minimo é 10"; ?>
 						
 						<?php include 'application/view/'.$url.'.phtml'; ?>
 					</div>

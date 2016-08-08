@@ -30,7 +30,7 @@ setcookie("logado", "", "time()-1");
 	<BODY>
 		<div class="row">
 			<div class="small-12 medium-12 large-12 columns">
-				<h1 class="msgSucess">By</h1>
+				<h1 class="msgSucess">Bye</h1>
 				
 			</div>
 		</div>
