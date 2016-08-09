@@ -21,4 +21,6 @@ $valida[rabugento] = "666";
 $valida[pereba] = "123";
 ?><?php
 $valida[marreco] = "123";
+?><?php
+$valida[arroz] = "123";
 ?>

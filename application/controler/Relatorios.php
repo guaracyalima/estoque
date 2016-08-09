@@ -97,7 +97,7 @@ class Relatorio extends Form   {
 			<th>Produto</th>
 			<th>Fornecedor</th>
 			<th>Quantidade</th>
-			<th>Observacao</th>';
+			<th>Unidade</th>';
 			echo '</tr>';
 			echo '</thead>';
 			$dados=$this->conexaoDB->ExecutaQuery($sql);
@@ -122,9 +122,7 @@ class Relatorio extends Form   {
 				echo '<br><a href="#" onclick="window.print()">IMPRIMIR</a>';
 		
 			
-		}
-		
-		
+		}	
 		
 	}
 	
@@ -157,7 +155,7 @@ function Saida($datainicial, $datafinal,$print="s"){
 			<th>Produto</th>
 			<th>Retirante</th>
 			<th>Quantidade</th>
-			<th>Observacao</th>';
+			<th>Unidade</th>';
 			echo '</tr>';
 			echo '</thead>';
 			$dados=$this->conexaoDB->ExecutaQuery($sql);

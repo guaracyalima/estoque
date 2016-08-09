@@ -15,9 +15,6 @@ class Retirantes extends Produtos   {
 	
 	}
 	
-	
-	
-	
 }
 
 ?>

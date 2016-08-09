@@ -10,21 +10,7 @@ class DB {
 	public $baseurl;
 	
 	function __construct() {
-		/*
-		$this->server="localhost";
-		$this->db="controle_estoque";
-		$this->user="root";
-		$this->pass="root";
-		$this->Conectar();
-		*/
-		/*
-		$this->server="54.207.6.186";
-		$this->db="marquezine";
-		$this->user="wmsbi";
-		$this->pass="XRGUUWVS5MAW59DB";
-		$this->Conectar();
-		*/
-		
+				
 		$this->server="localhost";
 		$this->db="bi_server";
 		$this->user="root";
@@ -32,7 +18,6 @@ class DB {
 		$this->Conectar();
 		
 	}
-	
 	
 	
 	function Conectar(){

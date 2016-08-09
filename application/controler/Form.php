@@ -57,7 +57,7 @@ class Form {
 							echo '<td  class="identificadorDeInput">'.ucfirst($campo)."</td><td><input type='text'  name='$campo' value='$valor' aria-required='true' required='' class='required'></td> \n";	
 						}else{
 							$campo=str_replace("_"," ",$campo);
-							echo '<td class="identificadorDeInput">'.ucfirst($campo)."</td><td><input type='text' name='$campo' value='$valor'></td> \n";	
+							echo '<td class="identificadorDeInput">'.ucfirst($campo)."</td><td><input type='text' name='$campo' value='$valor' placeholder='Unidade do produto' ></td> \n";	
 						}
 					} else {
 						$js="";

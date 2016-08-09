@@ -18,7 +18,7 @@ class Produtos {
 		$this->tabela=$tabela;
 		$produto=$this->conexaoDB->PesquisaUnica($this->tabela,$produto);
 		$this->quantidadeatual=$produto['estoque_atual'];
-		}
+	}
 	
 	#Cadastra ou chama o o metodo para atualizacao dos produtos
 	function Cadastrar($id=""){
@@ -27,7 +27,7 @@ class Produtos {
 		$where=(empty($id))?" ":" where id = $id";
 		$dados=$_POST;
 		
-        $campos="";		
+		$campos="";		
 		foreach ($dados as $campo=>$valor){
 			$campos.=$campo."='$valor', ";			
 		}
@@ -42,23 +42,23 @@ class Produtos {
 		//"de para" com nomes das tabelas
 		switch($this->tabela) {
 			case produto:
-				$newtable = 'srs_product';
-				break;
+			$newtable = 'srs_product';
+			break;
 			case categoria:
-				$newtable = 'srs_category';
-				break;
+			$newtable = 'srs_category';
+			break;
 			case entrada:
-				$newtable = 'srs_input';
-				break;
+			$newtable = 'srs_input';
+			break;
 			case saida:
-				$newtable = 'srs_output';
-				break;
+			$newtable = 'srs_output';
+			break;
 			case retirante:
-				$newtable = 'srs_requester';
-				break;
+			$newtable = 'srs_requester';
+			break;
 			case fornecedor:
-				$newtable = 'srs_supplier';
-				break;
+			$newtable = 'srs_supplier';
+			break;
 		}
 		
 		$this->conexaoDB->ExecutaQuery("$funcao $newtable SET $campos $where");
@@ -83,23 +83,23 @@ class Produtos {
 		//"de para" com nomes das tabelas
 		switch($this->tabela) {
 			case produto:
-				$newtable = 'srs_product';
-				break;
+			$newtable = 'srs_product';
+			break;
 			case categoria:
-				$newtable = 'srs_category';
-				break;
+			$newtable = 'srs_category';
+			break;
 			case entrada:
-				$newtable = 'srs_input';
-				break;
+			$newtable = 'srs_input';
+			break;
 			case saida:
-				$newtable = 'srs_output';
-				break;
+			$newtable = 'srs_output';
+			break;
 			case retirante:
-				$newtable = 'srs_requester';
-				break;
+			$newtable = 'srs_requester';
+			break;
 			case fornecedor:
-				$newtable = 'srs_supplier';
-				break;
+			$newtable = 'srs_supplier';
+			break;
 		}
 		
 		$this->conexaoDB->ExecutaQuery("Delete from $newtable where id=$id");
@@ -121,100 +121,100 @@ class Produtos {
 		<th>ID</th>
 		<th>Nome</th>
 		<th>Atualizar</th>
-		</tr>';
-		echo '</thead>';
-		while($produto=mysql_fetch_array($produtos)){
-			
-			echo '<tr>';
-			echo '<td>'.$produto['id'].'</td>';
-			echo '<td>'.$produto['nome'].'</td>';
-			echo '<td><a href="main.php?url='.$this->tabela.'&acao=formeditar&id='.$produto['id'].'">Editar</a></td>';
-			//echo '<td><a href="main.php?url='.$this->tabela.'&acao=deletar&id='.$produto['id'].'">Excluir</a></td>';
-			echo '</tr>';
-		}
-		echo '</table>';
-	}
-	
-	function Entrada($produto,$quantidade){
+	</tr>';
+	echo '</thead>';
+	while($produto=mysql_fetch_array($produtos)){
 		
-		$dados=$_POST;
-		foreach ($dados as $campo=>$valor){
+		echo '<tr>';
+		echo '<td>'.$produto['id'].'</td>';
+		echo '<td>'.$produto['nome'].'</td>';
+		echo '<td><a href="main.php?url='.$this->tabela.'&acao=formeditar&id='.$produto['id'].'">Editar</a></td>';
+			//echo '<td><a href="main.php?url='.$this->tabela.'&acao=deletar&id='.$produto['id'].'">Excluir</a></td>';
+		echo '</tr>';
+	}
+	echo '</table>';
+}
+
+function Entrada($produto,$quantidade){
+	
+	$dados=$_POST;
+	foreach ($dados as $campo=>$valor){
 		if($campo=='data'){
 			$valor="NOW()";	
 		}
-			$campos.=$campo."='$valor' ,";			
-		}
-		
-		//"de para" com nomes das tabelas
-		switch($this->tabela) {
-			case produto:
-				$newtable = 'srs_product';
-				break;
-			case categoria:
-				$newtable = 'srs_category';
-				break;
-			case entrada:
-				$newtable = 'srs_input';
-				break;
-			case saida:
-				$newtable = 'srs_output';
-				break;
-			case retirante:
-				$newtable = 'srs_requester';
-				break;
-			case fornecedor:
-				$newtable = 'srs_supplier';
-				break;
-		}
-		
-		$campos=strip_tags($campos);
-		$campos=substr($campos,0,-2);
-		$campos=str_replace("'NOW()'","NOW()",$campos);
-		$id=mysql_insert_id($this->conexaoDB->ExecutaQuery("Insert into srs_input SET $campos"));
-		$this->conexaoDB->ExecutaQuery("Update $newtable set estoque_atual=estoque_atual+$quantidade where id=$produto");
-		header("Location:main.php");
-				
-		
+		$campos.=$campo."='$valor' ,";			
 	}
 	
-	function Saida($produto,$quantidade){
-		include 'scriptsCSS.php';
-		
-		if($this->quantidadeatual<$quantidade){
-			echo"<script language='javascript' type='text/javascript'>alert('A quantidade a ser retirada e maior do que a existente no estoque. Tente novamente mais tarde ou contate o administrador do sistema.');window.location.href='main.php?url=estoque&acao=formcadastrosaida';</script>";
+		//"de para" com nomes das tabelas
+	switch($this->tabela) {
+		case produto:
+		$newtable = 'srs_product';
+		break;
+		case categoria:
+		$newtable = 'srs_category';
+		break;
+		case entrada:
+		$newtable = 'srs_input';
+		break;
+		case saida:
+		$newtable = 'srs_output';
+		break;
+		case retirante:
+		$newtable = 'srs_requester';
+		break;
+		case fornecedor:
+		$newtable = 'srs_supplier';
+		break;
+	}
+	
+	$campos=strip_tags($campos);
+	$campos=substr($campos,0,-2);
+	$campos=str_replace("'NOW()'","NOW()",$campos);
+	$id=mysql_insert_id($this->conexaoDB->ExecutaQuery("Insert into srs_input SET $campos"));
+	$this->conexaoDB->ExecutaQuery("Update $newtable set estoque_atual=estoque_atual+$quantidade where id=$produto");
+	header("Location:main.php");
+	
+	
+}
+
+function Saida($produto,$quantidade){
+	include 'scriptsCSS.php';
+	
+	if($this->quantidadeatual<$quantidade){
+		echo"<script language='javascript' type='text/javascript'>alert('A quantidade a ser retirada e maior do que a existente no estoque. Tente novamente mais tarde ou contate o administrador do sistema.');window.location.href='main.php?url=estoque&acao=formcadastrosaida';</script>";
 		// echo '<h4 class=errorMSG>A quantidade a ser retirada e maior do que a existente no estoque</h4>';
 		exit();
-		}
-		else
-		{
+	}
+	else
+	{
 		$dados=$_POST;
 		foreach ($dados as $campo=>$valor){
 			if($campo=='data'){
-			$valor="NOW()";	
-		}	
+				$valor="NOW()";	
+			}	
 			$campos.=$campo."='$valor' ,";			
 		}
 		
 		//"de para" com nomes das tabelas
 		switch($this->tabela) {
 			case produto:
-				$newtable = 'srs_product';
-				break;
+			$newtable = 'srs_product';
+			break;
 			case categoria:
-				$newtable = 'srs_category';
-				break;
+			$newtable = 'srs_category';
+			break;
 			case entrada:
-				$newtable = 'srs_input';
-				break;
+			$newtable = 'srs_input';
+			break;
 			case saida:
-				$newtable = 'srs_output';
-				break;
+			$newtable = 'srs_output';
+			break;
 			case retirante:
-				$newtable = 'srs_requester';
-				break;
+			$newtable = 'srs_requester';
+			break;
 			case fornecedor:
-				$newtable = 'srs_supplier';
-				break;
+			$newtable = 'srs_supplier';
+			break;
 		}
 		
 		$campos=strip_tags($campos);
@@ -222,89 +222,89 @@ class Produtos {
 		$campos=str_replace("'NOW()'","NOW()",$campos);
 		$id=mysql_insert_id($this->conexaoDB->ExecutaQuery("Insert into srs_output SET $campos"));
 		$this->conexaoDB->ExecutaQuery("Update $newtable set estoque_atual=estoque_atual-$quantidade where id=$produto");
-		}
-		header("Location:main.php");
 	}
-	
-	function EstoqueMinimo(){
+	header("Location:main.php");
+}
+
+function EstoqueMinimo(){
 	
 		//"de para" com nomes das tabelas
-		switch($this->tabela) {
-			case produto:
-				$newtable = 'srs_product';
-				break;
-			case categoria:
-				$newtable = 'srs_category';
-				break;
-			case entrada:
-				$newtable = 'srs_input';
-				break;
-			case saida:
-				$newtable = 'srs_output';
-				break;
-			case retirante:
-				$newtable = 'srs_requester';
-				break;
-			case fornecedor:
-				$newtable = 'srs_supplier';
-				break;
-		}
+	switch($this->tabela) {
+		case produto:
+		$newtable = 'srs_product';
+		break;
+		case categoria:
+		$newtable = 'srs_category';
+		break;
+		case entrada:
+		$newtable = 'srs_input';
+		break;
+		case saida:
+		$newtable = 'srs_output';
+		break;
+		case retirante:
+		$newtable = 'srs_requester';
+		break;
+		case fornecedor:
+		$newtable = 'srs_supplier';
+		break;
+	}
 	
 	$sql="Select nome from $newtable where estoque_atual<=estoque_minimo";	
-		
+	
 	$produtos=$this->conexaoDB->ExecutaQuery($sql);
 	$nlinhas=$this->conexaoDB->Nlinhas($produtos);
-		
-		if($nlinhas>0){
-			echo '<img src="img/alert.png"><br />';	
-			while($produto=mysql_fetch_array($produtos)) {
+	
+	if($nlinhas>0){
+		echo '<img src="img/alert.png"><br />';	
+		while($produto=mysql_fetch_array($produtos)) {
 
-			   echo '<big><b><span style="color:red;">'.$produto['nome']." chegou ao estoque minimo</span></b></big><br>";
-			}
-			
-		} else {
-			echo '<img src="img/ok.png" class="img">';
-			echo 'Nenhum alerta para hoje';
+			echo '<big><b><span style="color:red;">'.$produto['nome']." chegou ao estoque minimo</span></b></big><br>";
 		}
+		
+	} else {
+		echo '<img src="img/ok.png" class="img">';
+		echo 'Nenhum alerta para hoje';
+	}
+}
+
+function EstoqueBom(){
+	
+		//"de para" com nomes das tabelas
+	switch($this->tabela) {
+		case produto:
+		$newtable = 'srs_product';
+		break;
+		case categoria:
+		$newtable = 'srs_category';
+		break;
+		case entrada:
+		$newtable = 'srs_input';
+		break;
+		case saida:
+		$newtable = 'srs_output';
+		break;
+		case retirante:
+		$newtable = 'srs_requester';
+		break;
+		case fornecedor:
+		$newtable = 'srs_supplier';
+		break;
 	}
 	
-	function EstoqueBom(){
-		
-		//"de para" com nomes das tabelas
-		switch($this->tabela) {
-			case produto:
-				$newtable = 'srs_product';
-				break;
-			case categoria:
-				$newtable = 'srs_category';
-				break;
-			case entrada:
-				$newtable = 'srs_input';
-				break;
-			case saida:
-				$newtable = 'srs_output';
-				break;
-			case retirante:
-				$newtable = 'srs_requester';
-				break;
-			case fornecedor:
-				$newtable = 'srs_supplier';
-				break;
-		}
-		
 	$sql="Select nome from $newtable where estoque_atual>=estoque_minimo*2";	
-		
+	
 	$produtos=$this->conexaoDB->ExecutaQuery($sql);
 	$nlinhas=$this->conexaoDB->Nlinhas($produtos);
-		
-		if($nlinhas>0){
-			while($produto=mysql_fetch_array($produtos)) {
+	
+	if($nlinhas>0){
+		while($produto=mysql_fetch_array($produtos)) {
 
-			   echo '<big><b><span style="color:green;">'.$produto['nome']." +2 vezes estoque mínimo</span></b></big><br>";
-			}
-			
-		} 
-	}
+			echo '<big><b><span style="color:green;">'.$produto['nome']." +2 vezes estoque mínimo</span></b></big><br>";
+		}
+		
+	} 
+}
 }
 
 ?>

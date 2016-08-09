@@ -60,7 +60,7 @@
 				<div class="small-12 medium-12 large-12 columns">
 
 
-					<?php echo "O estoque minimo é 10"; ?>
+					<?php //echo "O estoque minimo é 10"; ?>
 						
 						<?php include 'application/view/'.$url.'.phtml'; ?>
 					</div>
