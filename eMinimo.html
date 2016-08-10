@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no">
+	<title>Estoque</title>
+
+	<link rel="stylesheet" type="text/css" href="../css/foundation.css">
+	<link rel="stylesheet" type="text/css" href="../css/foundation.min.css">
+	<link rel="stylesheet" type="text/css" href="../css/app.css">
+	<link rel="icon" type="image/png" href="../img/favicon.ico"/>
+
+</head>
+<body>
+
+	<div class="row">
+
+		<div class="medium-6 medium-centered large-4 large-centered columns">
+			<br>
+			<form action="verifica_usuario.php" method="POST" name="" id="frm">
+
+				<div class="row colum log-in-form">
+					<h4 class="text-center" id="acesso">Estoque minimo</h4>
+					<label class="labels">Produto</label>	
+
+					<select name="materiais"> 
+						<option value="">Selecione um prduto:</option> 
+						<?php 
+						$sql = "select * from materiais"; //aqui faz a consulta no banco de dados 
+						$resultado = mysql_query($sql); //aqui é o retorno da consulta 
+						if($resultado)//teste se houve resultado entra no while 
+						{ 
+						while($linhas = mysql_fetch_array($resultado,MSQL_ASSOC)){ //monta um vetor colocando todos os resultados em $linhas 
+						?> 
+						<option value="<?php $linhas['id'];//aqui é o valor geralmente se coloca o id da tabela ?>" 
+							<?php if($linhas['id'] == $_POST['materiais']){ echo "selected"; /*aqui eu testo e vejo se alguma opção foi selecionada eu a mantenho selecionada*/ } ?>> 
+							<?php echo $linhas['nome do campo a ser exibido']; /*aqui é a parte de exibição a informação que o usuario ira ver na tela "as opções"*/ ?> 
+						</option> 
+						<?php } } ?> 
+					</select> 
+
+					<input class="inputOther" name="produto" type="text" id="produto" placeholder="Ex: alface">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+					<label class="labels">Estoque minimo</label>	
+					<input class="inputOther" name="eminimo" type="text" id="eminimo">
+
+					<input type="submit" name="submit" value="Cadastrar" class="button expanded">
+
+
+				</div>		
+
+			</form>
+		</div>
+	</div>	
+
+</body>
+</html>

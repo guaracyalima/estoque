@@ -30,6 +30,8 @@
 									<li><a href="main.php?url=estoque&acao=formcadastrosaida">Saida de Material</a></li>
 
 									<li><a href="main.php?url=fornecedor&acao=formcadastro">Cadastrar Fornecedor</a></li>
+									<li><a href="estoque_minimo.php">Definir estoque minimo</a></li>
+
 
 								</ul>
 							</li>
