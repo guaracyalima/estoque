@@ -1,3 +1,4 @@
+<!-- Aqui é so pra chamar as folhas de estilos sem ter q fazer esse monte de inserção no codigo principal, so da um require ou include-->
 <meta http-equiv="Content-Type" content="text/html">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, user-scalable=no">

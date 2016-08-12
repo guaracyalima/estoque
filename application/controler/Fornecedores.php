@@ -8,6 +8,8 @@ class Fornecedores extends Produtos   {
 	public $conexaoDB;
 	
 	#Construtor - Conecta e seleciona a tabela
+
+	//não se esqueça, é POO
 	function __construct() {
 		
 		$this->conexaoDB=new DB();

@@ -53,7 +53,7 @@
 		</div>
 		<div class="small-12 medium-12 large-12 columns">
 
-		<?php include 'menu.php'; ?>
+			<?php include 'menu.php'; ?>
 
 			<div class="row"> 
 
@@ -61,20 +61,28 @@
 
 
 					<?php //echo "O estoque minimo é 10"; ?>
-						
-						<?php include 'application/view/'.$url.'.phtml'; ?>
-					</div>
+					
+					<?php include 'application/view/'.$url.'.phtml'; ?>
 				</div>
 			</div>
 		</div>
-
 	</div>
 
+</div>
 
-	<script src="js/vendor/jquery.js"></script>
-	<script src="js/vendor/what-input.js"></script>
-	<script src="js/vendor/foundation.js"></script>
-	<script src="js/app.js"></script>	
+
+<footer>
+	<div class="row">
+		<div class="small-12 medium-12 large-12 columns ">
+			<h6 class="footer">Developed by <strong><a href="https://br.linkedin.com/in/guaracyalima">CTI</a></strong>	</h6>
+		</div>
+	</div>
+</footer>
+
+<script src="js/vendor/jquery.js"></script>
+<script src="js/vendor/what-input.js"></script>
+<script src="js/vendor/foundation.js"></script>
+<script src="js/app.js"></script>	
 </body>
 
 </html>

@@ -23,6 +23,7 @@ class Form {
 		
 	}
 	
+	//formulario de cadastros (validos para todos os cadastros do sistema ---- NÃO ALTERAR -- VAI DAR MERDA )
 	function FormCadastro($url,$action,$combos="",$ajax=array()){
 		
 		//$form->FormCadastro('produto','entrada','categoria,produto,fornecedor',
@@ -92,7 +93,7 @@ class Form {
 	
 	}
 	
-/*			 FormEditar("editar",$id,"categoria,''");*/
+/* FormEditar("editar",$id,"categoria,''");*/
 	function FormEditar($action,$id,$combos,$block="",$ajax=array()){
 	
 	
@@ -146,7 +147,9 @@ class Form {
 		echo '</form>';	
 	}
 	
-	
+
+
+	//aquelas selections nos formularios tipo onde seleciona o nome do fornecedor
 	function Combo($tabela,$nome,$value,$option,$script,$where=""){
 		
 		if(!empty($where)){

@@ -196,6 +196,8 @@ class Categorias {
 				
 		
 	}
+
+	//saida de produtos
 	
 	function Saida($produto,$quantidade){
 		
@@ -244,6 +246,7 @@ class Categorias {
 		header("Location:main.php");
 	}
 	
+	//verificador de estoque minimo
 	function EstoqueMinimo(){
 	
 		//"de para" com nomes das tabelas

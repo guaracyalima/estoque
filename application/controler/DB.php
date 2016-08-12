@@ -1,3 +1,11 @@
+<!-- configurador de acesso ao banco de dados-->
+
+
+<!--
+
+Não altere o nome de uma coluna se quer do DB que via dar merda, como o acesso é dinamico, se mudar vai ter q mudar a chamda dela em cada arquivo do sistema ^(-_-)^
+
+-->
 <?php
 
 class DB {
@@ -9,6 +17,7 @@ class DB {
 	public $conexao;
 	public $baseurl;
 	
+	//construtor
 	function __construct() {
 				
 		$this->server="localhost";
@@ -19,7 +28,7 @@ class DB {
 		
 	}
 	
-	
+	//conexao 9propriamente dita)
 	function Conectar(){
 		
 		$this->conexao=mysql_connect($this->server,$this->user,$this->pass) or die('Erro ao se conectar');
